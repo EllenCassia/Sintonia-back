@@ -1,4 +1,4 @@
-package br.edu.ifpb.ellencassia.dac.sintonia.controller;
+package br.edu.ifpb.ellencassia.dac.sintonia.presentation.controller;
 
 import br.edu.ifpb.ellencassia.dac.sintonia.buniness.dto.AlbumDTO;
 import br.edu.ifpb.ellencassia.dac.sintonia.buniness.service.AlbumService;
