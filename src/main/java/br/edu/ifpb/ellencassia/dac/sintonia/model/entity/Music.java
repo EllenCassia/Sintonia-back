@@ -32,11 +32,10 @@ public class Music {
     @Column(name = "artist")
     private String artist;
 
-    public Music(String name, Integer year, Album album, String artist) {
+    public Music(String name, Integer year, String artist) {
         this.artist = artist;
         this.year = year;
         this.name = name;
-        this.album = album;
     }
 
 }
