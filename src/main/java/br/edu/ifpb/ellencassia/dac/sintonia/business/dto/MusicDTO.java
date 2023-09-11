@@ -1,7 +1,5 @@
-package br.edu.ifpb.ellencassia.dac.sintonia.buniness.dto;
+package br.edu.ifpb.ellencassia.dac.sintonia.business.dto;
 
-import br.edu.ifpb.ellencassia.dac.sintonia.model.entity.Album;
-import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -17,8 +15,8 @@ public class MusicDTO {
 
     private Integer year;
 
-    private Album album;
+    private AlbumDTO album;
 
     private String artist;
-
+    
 }

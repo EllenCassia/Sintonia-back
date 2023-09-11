@@ -1,4 +1,4 @@
-package br.edu.ifpb.ellencassia.dac.sintonia.buniness.dto;
+package br.edu.ifpb.ellencassia.dac.sintonia.business.dto;
 
 import br.edu.ifpb.ellencassia.dac.sintonia.model.entity.Gender;
 import lombok.AllArgsConstructor;
