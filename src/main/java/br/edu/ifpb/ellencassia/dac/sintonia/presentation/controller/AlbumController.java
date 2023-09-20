@@ -11,7 +11,7 @@ import br.edu.ifpb.ellencassia.dac.sintonia.business.service.AlbumService;
 import java.util.List;
 @RestController
 @RequestMapping("/api/album")
-@CrossOrigin(origins = "http://localhost:3000") 
+@CrossOrigin(origins = "http://localhost:3000")
 public class AlbumController {
 
     @Autowired
