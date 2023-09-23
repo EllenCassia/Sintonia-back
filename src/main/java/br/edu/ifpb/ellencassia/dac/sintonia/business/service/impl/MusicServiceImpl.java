@@ -60,27 +60,35 @@ public class MusicServiceImpl implements MusicService {
         return null; 
     }
 
-public MusicDTO updateMusic(Long id, MusicDTO musicDto) {
-    Music musicToUpdate = musicRepository.findById(id).orElse(null);
-
-    if (musicToUpdate != null) {
-        musicToUpdate.setYear(musicDto.getYear());
-        musicToUpdate.setName(musicDto.getName());
-        
-        if (musicDto.getAlbum() != null) {
-            Album album = convertServiceDTO.convertAlbumDtoToAlbum(musicDto.getAlbum());
-            musicToUpdate.setAlbum(album);
-        } else {
-            musicToUpdate.setAlbum(null); 
+    public MusicDTO updateMusic(Long id, MusicDTO musicDto) {
+        Music musicToUpdate = musicRepository.findById(id).orElse(null);
+    
+        if (musicToUpdate != null) {
+            musicToUpdate.setYear(musicDto.getYear());
+            musicToUpdate.setName(musicDto.getName());
+            
+            if (musicDto.getAlbum() != null) {
+                Long albumId = musicDto.getAlbum().getId();
+                Album existingAlbum = albumRepository.findById(albumId).orElse(null);
+    
+                if (existingAlbum != null) {
+                    musicToUpdate.setAlbum(existingAlbum);
+                } else {
+                    Album newAlbum = convertServiceDTO.convertAlbumDtoToAlbum(musicDto.getAlbum());
+                    Album savedAlbum = albumRepository.save(newAlbum);
+                    musicToUpdate.setAlbum(savedAlbum);
+                }
+            } else {
+                musicToUpdate.setAlbum(null); 
+            }
+            
+            musicToUpdate.setArtist(musicDto.getArtist());
+            musicToUpdate = musicRepository.save(musicToUpdate);
+    
+            return convertServiceDTO.convertMusicToMusicDto(musicToUpdate);
         }
-        
-        musicToUpdate.setArtist(musicDto.getArtist());
-        musicToUpdate = musicRepository.save(musicToUpdate);
-
-        return convertServiceDTO.convertMusicToMusicDto(musicToUpdate);
+        return null; 
     }
-    return null; 
-}
 
 
     public List<MusicDTO> getMusicByAlbum(Long albumId) {
